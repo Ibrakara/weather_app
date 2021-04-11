@@ -1,3 +1,5 @@
+import tempUnitChange from "../unit";
+
 const headerRender = function () {
   const headerTag = document.createElement("header");
   const headerLogo = document.createElement("img");
@@ -9,11 +11,15 @@ const headerRender = function () {
   degreeButton.textContent = "Celcius/Fahrenheit";
   searchBox.id = "search-box";
   searchButton.id = "search-button";
+  degreeButton.id = "unit-change";
   const headerElements = [headerLogo, searchBox, searchButton, degreeButton];
   document.body.appendChild(headerTag);
   headerElements.forEach((e) => {
     headerTag.appendChild(e);
     e.className = "header-element";
+  });
+  degreeButton.addEventListener("click", () => {
+    tempUnitChange();
   });
 };
 

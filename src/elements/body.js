@@ -5,10 +5,10 @@ const bodyRender = function () {
   const weatherCondition = document.createElement("h1");
   const weather = document.createElement("img");
   const cityTemp = document.createElement("h2");
-  const forcastDiv = document.createElement("div");
+  const forecastDiv = document.createElement("div");
   document.body.appendChild(mainTag);
   mainTag.appendChild(mainCity);
-  mainTag.appendChild(forcastDiv);
+  mainTag.appendChild(forecastDiv);
   mainCity.appendChild(cityName);
   mainCity.appendChild(weatherCondition);
   mainCity.appendChild(weather);
@@ -19,25 +19,54 @@ const bodyRender = function () {
   weatherCondition.id = "weather-condition";
   weather.id = "wheather-img";
   cityTemp.id = "city-temp";
-  forcastDiv.id = "forecast-container";
+  forecastDiv.id = "forecast-container";
+  cityTemp.className = "current-temp temp";
+  cityTemp.dataset.unit = "c";
 };
 
-const forecastRender = function () {
+const hourlyForecastRender = async function (data) {
   const forecastDiv = document.querySelector("#forecast-container");
+  if (forecastDiv.hasChildNodes()) {
+    forecastDiv.innerHTML = "";
+  }
+  const degreeSymbol = String.fromCharCode(176);
+  for (let i = 0; i < 24; i += 1) {
+    const element = document.createElement("div");
+    const hour = document.createElement("p");
+    const img = document.createElement("img");
+    const temp = document.createElement("p");
+    temp.className = "forecast-temp temp";
+    temp.dataset.unit = "c";
+    forecastDiv.appendChild(element);
+    element.append(hour, img, temp);
+    const unixTimestamp = data.hourly[i].dt;
+    const date = new Date(unixTimestamp * 1000);
+    const hours =
+      date.getHours() < 10 ? `0${date.getHours()}.00` : `${date.getHours()}.00`;
+    hour.textContent = hours;
+    img.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${data.hourly[i].weather[0].icon}@2x.png`
+    );
+    temp.textContent = `${Math.round(data.hourly[i].temp)} ${degreeSymbol}`;
+  }
 };
 
-const currentWheatherRender = function (obj) {
+const currentWheatherRender = function (data) {
   // const forcastDiv = document.querySelector("#forcast-container");
   const cityName = document.querySelector("#city-name");
   const weatherCondition = document.querySelector("#weather-condition");
   const weatherImg = document.querySelector("#wheather-img");
   const cityTemp = document.querySelector("#city-temp");
-  const forcastData = obj;
-  cityName.textContent = forcastData.city.name;
-  cityTemp.textContent = forcastData.list[0].main.temp;
-  weatherCondition.textContent = forcastData.list[0].weather[0].description;
-  weatherImg.src = `http://openweathermap.org/img/wn/${forcastData.list[0].weather[0].icon}@2x.png`;
-  weatherImg.title = forcastData.list[0].weather[0].description;
+  const degreeSymbol = String.fromCharCode(176);
+  const forcastData = data;
+  cityName.textContent = `${forcastData.city.name}, ${forcastData.city.country}`;
+  cityTemp.textContent = `${Math.round(
+    forcastData.current.temp
+  )} ${degreeSymbol}`;
+  weatherCondition.textContent = forcastData.current.weather[0].description;
+  weatherImg.src = `http://openweathermap.org/img/wn/${forcastData.current.weather[0].icon}@2x.png`;
+  weatherImg.title = forcastData.current.weather[0].description;
 };
 
-export { bodyRender, currentWheatherRender };
+export { bodyRender, currentWheatherRender, hourlyForecastRender };
