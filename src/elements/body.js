@@ -21,7 +21,6 @@ const bodyRender = function () {
   cityTemp.id = "city-temp";
   forecastDiv.id = "forecast-container";
   cityTemp.className = "current-temp temp";
-  cityTemp.dataset.unit = "c";
 };
 
 const hourlyForecastRender = async function (data) {
@@ -35,6 +34,7 @@ const hourlyForecastRender = async function (data) {
     const hour = document.createElement("p");
     const img = document.createElement("img");
     const temp = document.createElement("p");
+    element.className = "day-div";
     temp.className = "forecast-temp temp";
     temp.dataset.unit = "c";
     forecastDiv.appendChild(element);
@@ -53,7 +53,6 @@ const hourlyForecastRender = async function (data) {
 };
 
 const currentWheatherRender = function (data) {
-  // const forcastDiv = document.querySelector("#forcast-container");
   const cityName = document.querySelector("#city-name");
   const weatherCondition = document.querySelector("#weather-condition");
   const weatherImg = document.querySelector("#wheather-img");
@@ -64,6 +63,7 @@ const currentWheatherRender = function (data) {
   cityTemp.textContent = `${Math.round(
     forcastData.current.temp
   )} ${degreeSymbol}`;
+  cityTemp.dataset.unit = "c";
   weatherCondition.textContent = forcastData.current.weather[0].description;
   weatherImg.src = `http://openweathermap.org/img/wn/${forcastData.current.weather[0].icon}@2x.png`;
   weatherImg.title = forcastData.current.weather[0].description;

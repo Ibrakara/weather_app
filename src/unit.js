@@ -6,15 +6,15 @@ const tempUnitChange = function () {
     temps.forEach((elem) => {
       elem.dataset.unit = "f";
       const degree = elem.textContent.slice(0, -2);
-      const fah = (degree * 9) / 5 + 32;
+      const fah = Math.round((degree * 9) / 5 + 32);
       elem.textContent = `${fah} ${degreeSymbol}`;
     });
   } else {
     temps.forEach((elem) => {
       elem.dataset.unit = "c";
       const degree = elem.textContent.slice(0, -2);
-      const fah = ((degree - 32) * 5) / 9;
-      elem.textContent = `${fah} ${degreeSymbol}`;
+      const cel = Math.round(((degree - 32) * 5) / 9);
+      elem.textContent = `${cel} ${degreeSymbol}`;
     });
   }
 };
