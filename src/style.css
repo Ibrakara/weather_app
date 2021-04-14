@@ -1,10 +1,201 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 header {
   display: flex;
+  top: 0;
+  left: 0;
   width: 100%;
-  flex-wrap: wrap;
+  height: 8vmax;
   justify-content: space-around;
+  align-items: center;
+  justify-self: center;
+  background-color: #5e7bee;
 }
 #logo-div {
-  display: inline-block;
-  width: auto;
+  display: flex;
+  justify-self: flex-start;
+  justify-content: center;
+  align-items: center;
+  width: 14rem;
+  height: fit-content;
+}
+#logo {
+  height: 9vmin;
+}
+#header-title {
+  font-size: 2.5vw;
+  padding-left: 1vmin;
+  color: white;
+}
+#search-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%;
+}
+#search-box {
+  width: 18vmin;
+  height: 4vmin;
+  border: none;
+  border-radius: 10px;
+  font-size: 1vw;
+}
+#search-box:focus {
+  outline: none;
+}
+.header-button {
+  border: none;
+  background-color: #ff686d;
+  height: 4vmin;
+  color: white;
+  border-radius: 4px;
+  font-size: 1.2vw;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px 0px rgb(66, 66, 66);
+}
+.header-button:focus {
+  outline: none;
+}
+.header-button:active {
+  transform: scaleY(0.98) scaleX(0.98);
+  box-shadow: 1px 1px 2px 0.5px grey;
+}
+/* #search-button {
+  border: none;
+  background-color: #8f84f8;
+  height: 3vmax;
+  color: white;
+} */
+#unit-change {
+  width: fit-content;
+  padding: 0 1vmin;
+  margin-left: 1vmax;
+}
+main {
+  padding: 0 30px;
+  display: grid;
+  background-color: whitesmoke;
 }

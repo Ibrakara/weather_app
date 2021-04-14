@@ -31,7 +31,7 @@ module.exports = {
   plugins: [
     new ESLintPlugin(),
     new HtmlWebpackPlugin({
-      title: "Development",
+      title: "Super Weather",
     }),
     new Dotenv(),
   ],

@@ -9,7 +9,8 @@ const headerRender = function () {
   const searchButton = document.createElement("button");
   const searchDiv = document.createElement("div");
   const degreeButton = document.createElement("button");
-  headerLogo.src = "https://www.accuweather.com/images/logos/accuweather.svg";
+  headerLogo.src =
+    "https://images-na.ssl-images-amazon.com/images/I/61nuuPxUvaL.png";
   searchBox.setAttribute("placeholder", "City Name");
   searchButton.textContent = "Search";
   degreeButton.textContent = "Celcius/Fahrenheit";
@@ -20,6 +21,8 @@ const headerRender = function () {
   headerLogo.id = "logo";
   searchDiv.id = "search-div";
   logoDiv.id = "logo-div";
+  searchButton.className = "header-button";
+  degreeButton.className = "header-button";
   headerTitle.textContent = "Super Weather";
   logoDiv.append(headerLogo, headerTitle);
   searchDiv.append(searchBox, searchButton);
@@ -27,7 +30,7 @@ const headerRender = function () {
   document.body.appendChild(headerTag);
   headerElements.forEach((e) => {
     headerTag.appendChild(e);
-    e.className = "header-element";
+    e.className = `${e.className} header-element`;
   });
   degreeButton.addEventListener("click", tempUnitChange);
 };
