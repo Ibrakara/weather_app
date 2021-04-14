@@ -34,11 +34,13 @@ const hourlyForecastRender = async function (data) {
     const hour = document.createElement("p");
     const img = document.createElement("img");
     const temp = document.createElement("p");
+    const condition = document.createElement("p");
     element.className = "day-div";
     temp.className = "forecast-temp temp";
     temp.dataset.unit = "c";
+    condition.className = "hourly-condition";
     forecastDiv.appendChild(element);
-    element.append(hour, img, temp);
+    element.append(hour, img, temp, condition);
     const unixTimestamp = data.hourly[i].dt;
     const date = new Date(unixTimestamp * 1000);
     const hours =
@@ -49,6 +51,7 @@ const hourlyForecastRender = async function (data) {
       `http://openweathermap.org/img/wn/${data.hourly[i].weather[0].icon}@2x.png`
     );
     temp.textContent = `${Math.round(data.hourly[i].temp)} ${degreeSymbol}`;
+    condition.textContent = `${data.hourly[i].weather[0].description}`;
   }
 };
 
