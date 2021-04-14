@@ -6,7 +6,6 @@ const getCurrentCityWeather = async function () {
     mode: "cors",
   });
   const ipData = await fetchIp.json();
-  console.log(ipData);
   const fetcCurrentLocationData = await fetch(
     `http://ip-api.com/json/${ipData.ip}`,
     {
@@ -16,13 +15,11 @@ const getCurrentCityWeather = async function () {
   const cityData = await fetcCurrentLocationData.json();
   apiCall(cityData.city)
     .then((data) => {
-      console.log(data);
       currentWheatherRender(data);
       return data;
     })
     .then((response) => {
       hourlyForecastRender(response);
     });
-  console.log(cityData);
 };
 export { getCurrentCityWeather as default };

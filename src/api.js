@@ -17,7 +17,6 @@ const apiCall = async function (city) {
     finalData.city = data.city;
     return finalData;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

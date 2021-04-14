@@ -10,7 +10,6 @@ const getCity = function () {
     apiCall(city)
       .then((data) => {
         currentWheatherRender(data);
-        console.log(data);
         return data;
       })
       .then((data) => hourlyForecastRender(data));
